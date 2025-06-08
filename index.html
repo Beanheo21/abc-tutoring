@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABC Tutoring</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #34495e;
+      padding: 15px;
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #f1c40f;
+    }
+    .page {
+      display: none;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    .page.active {
+      display: block;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      display: block;
+      width: 80%;
+      margin: 15px auto;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      padding: 12px 25px;
+      background: #34495e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background: #f1c40f;
+      color: #34495e;
+    }
+    ul {
+      text-align: left;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("PN5u7N2L2Q45sd3mF");
+    })();
+
+    function sendEmail(e) {
+      e.preventDefault();
+      emailjs.sendForm("service_qljzhse", "template_ubfvhmm", "#contact-form")
+        .then(() => {
+          alert("Message sent successfully!");
+          document.getElementById("contact-form").reset();
+        }, (error) => {
+          alert("Failed to send message. Please try again.");
+          console.error("EmailJS Error:", error);
+        });
+    }
+
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showPage('about');
+    });
+  </script>
+</head>
+<body>
+  <header>
+  <img src="abc.png" alt="ABC Tutoring Logo" style="height: 200px; margin-bottom: 10px;" />
+  <h1>Welcome to ABC Tutoring</h1>
+  <p>Helping elementary students excel in Math and English</p>
+</header>
+
+
+  <nav>
+    <a onclick="showPage('about')">About Us</a>
+    <a onclick="showPage('contact')">Book a Session</a>
+    <a onclick="showPage('faq')">FAQ</a>
+  </nav>
+
+<section id="about" class="page">
+  <h2>About Us</h2>
+  <p>ABC Tutoring was founded with the mission to support students in underserved areas by providing high-quality tutoring services at a low cost or for no cost at all. ABC tutoring focuses on fostering and nurturing the next generation and aims to promote the following principles through our tutoring service: </p>
+  <ul>
+    <li><strong>Curiosity:</strong> Encouraging a love for learning and exploration.</li>
+    <li><strong>Determination:</strong> Fostering perseverance in overcoming academic challenges.</li>
+    <li><strong>Patience:</strong> Understanding that growth is a process and supporting students every step of the way.</li>
+    <li><strong>Empathy:</strong> Connecting with students to support their emotional and academic needs.</li>
+    <li><strong>Responsibility:</strong> Modeling integrity, reliability, and accountability.</li>
+    <li><strong>Creativity:</strong> Using imaginative methods to make learning engaging and fun.</li>
+    <li><strong>Clarity:</strong> Ensuring explanations are clear and easy to follow.</li>
+  </ul>
+
+  <div style="display: flex; align-items: center; gap: 20px; margin-top: 30px;">
+    <img src="b.png" alt="Benjamin Heo" style="width: 150px; height: auto; border-radius: 10px;" />
+    <p><strong>Benjamin Heo</strong> is a dedicated high school student from The Episcopal Academy. He placed 3rd in the MathCounts county competition and earned a 1st place and perfect score award at the PJAS State Science Competition. He also serves as a DEI student council member and brings patience, knowledge, and enthusiasm to every session.</p>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 20px; margin-top: 30px;">
+    <img src="a.png" alt="Andrew Yang" style="width: 350px; height: auto; border-radius: 10px;" />
+    <p><strong>Andrew Yang</strong> is a strong student-athlete and freshman at The Episcopal Academy. He is a varsity soccer player, earned a 1st place award at PJAS regionals, and balances athletics and academics with dedication. Andrew brings a positive attitude and excellent time-management skills to help students succeed.</p>
+  </div>
+</section>
+
+
+  <section id="faq" class="page">
+  <h2>FAQ</h2>
+  <p><strong>How do I book a session?</strong> 1. Click the "Book a Session" tab and fill in the blanks. 2. Once completed, submit the form. 3. A team member will reach out within 3 days to schedule a meeting time for the child.</p>
+
+  <p><strong>What ages do you tutor?</strong> We specialize in tutoring elementary school students.</p>
+
+  <p><strong>What subjects do you offer?</strong> Math and English.</p>
+
+  <p><strong>How long is each session?</strong> Typically 30 to 45 minutes depending on needs.</p>
+
+  <p><strong>Are your tutors qualified?</strong> All tutors are high-achieving high school students from The Episcopal Academy trained to work with younger learners.</p>
+
+  <p><strong>How much does it cost?</strong> Tutoring is free or low-cost to increase accessibility.</p>
+
+  <p><strong>What platform do you use for tutoring sessions?</strong> We typically use Zoom or Google Meet. You'll receive a link once a session is confirmed.</p>
+
+  <p><strong>Can parents sit in during the session?</strong> Yes! We welcome parent involvement, especially for younger students.</p>
+
+  <p><strong>How often can my child receive tutoring?</strong> Students can typically book one to two sessions per week, depending on tutor availability.</p>
+
+  <p><strong>What if I need to cancel or reschedule a session?</strong> Just email us at least 24 hours in advance, and we’ll do our best to reschedule.</p>
+
+  <p><strong>Will the same tutor work with my child each time?</strong> We try to keep tutoring consistent, but availability may vary week to week.</p>
+
+  <p><strong>Can you help with homework?</strong> Yes! We can help with current assignments and also offer practice and review on key topics.</p>
+
+  <p><strong>Can I request a specific tutor?</strong> You can note preferences in the booking form, and we’ll try to match accordingly.</p>
+
+  <p><strong>Is there a waitlist?</strong> Occasionally, yes — but we’ll notify you within a few days if there’s a delay in scheduling.</p>
+</section>
+
+
+  <section id="contact" class="page contact-form">
+    <h2>Book a Session</h2>
+    <form id="contact-form" onsubmit="sendEmail(event)">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="student_name" placeholder="Student's Name" required>
+      <input type="number" name="student_age" placeholder="Student's Age" required>
+      <input type="text" name="student_grade" placeholder="Student's Grade" required>
+      <input type="text" name="student_school" placeholder="Student's School" required>
+      <input type="text" name="subject_support" placeholder="Subject Areas Student Needs Support With (e.g., Reading, Fractions)" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Additional Comments (optional)" rows="5"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ABC Tutoring. All rights reserved.</p>
+  </footer>
+</body>
+</html>
